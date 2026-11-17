@@ -26,9 +26,23 @@ Where a suitable demonstration is available, show how the operator inspects a fa
 
 ## 6. Show an optional agent
 
-When appropriate, demonstrate an agent task within the workflow and its structured result. Explain why that task benefits from reasoning, while routine operations stay deterministic.
+When appropriate, first show the selected Project + Agent-version capability assignments, then demonstrate an agent task within the workflow and its structured result. Explain why that task benefits from reasoning, while routine operations stay deterministic.
 
-## 7. Close with the engineering choices
+Distinguish assigned Tools and Workflows from direct-operation controls. Do not present a disabled direct operation as proof that an enabled Tool cannot perform the same action within its normal contract.
+
+## 7. Show external coding-agent access through MCP
+
+Use an already configured coding assistant to request a suitable exposed SkyCommand operation, such as a read-only inspection or an approved demonstration workflow. Show the genuine returned result or Run ID and the corresponding platform history where available.
+
+Explain that the external MCP connection is distinct from the embedded Agent Run's connection. Do not display credentials, private connection configuration or unrestricted local-access claims.
+
+## 8. Explain the work-order development method
+
+Describe how an outcome becomes a scoped work order, how related work streams carry dependencies and assigned roles, and how results and review evidence are handed back. Use a sanitized illustrative outline rather than publishing private work-order payloads.
+
+Clearly label this as the **current development method**. Native work-order coordination inside SkyCommand is **planned for Phase 20**; do not present an illustration as a shipped product screen.
+
+## 9. Close with the engineering choices
 
 Summarize durable execution, reusable tools, visible results, and human review. Distinguish the capability shown from work still in progress.
 

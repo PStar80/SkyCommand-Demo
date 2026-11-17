@@ -1,6 +1,6 @@
-# Feature tour
+# Feature Tour
 
-[← Showcase home](../README.md)
+[← Showcase Home](../README.md)
 
 SkyCommand brings workflow definition, execution, and inspection into a common interface. This tour introduces the platform's core capabilities; the walkthrough connects them into a demonstration sequence.
 
@@ -16,9 +16,9 @@ Temporal provides the durable execution layer. The operator interface and backen
 
 Run history, node outcomes, structured outputs, and diagnostics make the execution path visible. A useful demonstration should show both an overall outcome and the individual steps that produced it.
 
-## 4. Use embedded agents selectively
+## 4. Run Embedded AI Agents
 
-AI agents are optional workflow nodes. They contribute reasoning where useful without replacing deterministic execution. An embedded Agent Run can use its run-bound MCP connection to invoke configured capabilities and return attributable results to the surrounding workflow.
+AI agents can run as workflow nodes. They contribute reasoning where useful without replacing deterministic execution. An embedded Agent Run can use its run-bound MCP connection to invoke configured capabilities and return attributable results to the surrounding workflow.
 
 ## 5. Let coding agents use SkyCommand through MCP
 
@@ -36,7 +36,7 @@ Agent integration remains active engineering work. A configured or listed capabi
 
 ## 7. Support developer operations
 
-Git workflows, scoped delivery, Docker operations, and database-backed services connect the orchestration platform to day-to-day development work. This public tour describes the functions without exposing repository contents, local machine configuration, or account sessions.
+Git workflows, scoped delivery, Docker operations, and database-backed services connect the orchestration platform to day-to-day development work. The architecture groups resource endpoints as File System, Database, Git Repositories and Web APIs. This public tour describes the functions without exposing repository contents, local machine configuration, or account sessions.
 
 ## 8. Keep human decisions where intended
 
@@ -50,4 +50,4 @@ This is an existing development practice. **Native work-order coordination insid
 
 ## Where to go next
 
-[Architecture](./architecture.md) · [Walkthrough](./walkthrough.md) · [Screenshot gallery](./gallery.md)
+[Architecture](./architecture.md) · [Walkthrough](./walkthrough.md) · [Screenshot Gallery](./gallery.md)

@@ -1,0 +1,52 @@
+name: Refresh Showcase Assets (One Time)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/refresh-showcase.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: showcase-asset-refresh
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check Out Reviewed Revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Generate Showcase Assets From Existing Artwork
+        run: python .github/showcase_refresh.py
+      - name: Validate Assets and Publish Scoped Changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          files=list(Path('assets/brand').glob('*.svg'))
+          assert len(files)==12, f'Expected 12 brand assets, found {len(files)}'
+          for p in files:
+              root=ET.parse(p).getroot()
+              assert root.tag=='{http://www.w3.org/2000/svg}svg'
+              assert 'Optional' not in p.read_text()
+              if '-static' in p.stem:
+                  assert root.get('data-motion')=='static'
+                  assert not any(n.tag.rsplit('}',1)[-1] in ('style','animate','animateMotion','animateTransform') for n in root.iter())
+          print('Validated 12 SVGs, six static fallbacks and AI Agents naming.')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/brand
+          git diff --cached --stat
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh SkyCommand showcase graphics with full-width animated hero and AI Agents'
+            git push origin HEAD:main
+          fi

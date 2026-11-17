@@ -2,98 +2,105 @@
   <source media="(prefers-reduced-motion: reduce) and (max-width: 650px)" srcset="./assets/brand/hero-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/brand/hero-static.svg" />
   <source media="(max-width: 650px)" srcset="./assets/brand/hero-mobile.svg" />
-  <img src="./assets/brand/hero.svg" width="100%" alt="SkyCommand — workflow automation and orchestration. Deterministic by default, with reusable tools, optional agents, external MCP access, and observable execution. An independent platform by Paul Sattaur." />
+  <img src="./assets/brand/hero.svg" width="100%" alt="SkyCommand — Workflow Automation Platform. Deterministic Workflows and AI Agents. Reusable Tools, Durable Workflows, AI Agents and Observable Execution. Animated concept artwork, not an application screenshot." />
 </picture>
 
 <p align="center">
-  <a href="./docs/features.md">Feature tour</a> ·
-  <a href="./docs/architecture.md">Architecture</a> ·
+  <a href="#key-capabilities">Capabilities</a> ·
+  <a href="#see-the-platform">Screenshots</a> ·
+  <a href="#platform-architecture">Architecture</a> ·
   <a href="./docs/walkthrough.md">Walkthrough</a> ·
-  <a href="./docs/gallery.md">Screenshots</a> ·
-  <a href="mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough">Get in touch</a>
+  <a href="mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough">Get In Touch</a>
 </p>
 
 # SkyCommand
 
-**Build workflows. See what ran. Understand what happened.**
+**Build workflows. Run agents. Understand every result.**
 
-SkyCommand is an independent workflow automation and orchestration platform built by **Paul Sattaur**. It brings reusable tools, durable workflows, optional embedded AI agents, MCP access for external coding agents, and operational visibility into one developer-focused platform.
+SkyCommand is a full-stack workflow automation and orchestration platform built by **Paul Sattaur** for developers and operators. It brings reusable tools, durable workflows, embedded AI agents and external MCP access into one interface for running work and inspecting its results.
 
-The guiding principle is simple: **deterministic workflows by default; AI agents where adaptive reasoning is useful.**
+**SkyCommand can call agents, and coding agents can call SkyCommand.** Combine repeatable execution with adaptive reasoning, configure the capabilities available to embedded agents, and follow the resulting workflow and node outcomes.
 
-> **Public showcase, private implementation.** This repository contains product documentation and presentation assets. It is not the application source, an installable distribution, or a hosted interactive demo.
+> **Public Showcase · Private Implementation.** This repository contains product documentation and presentation assets—not application source, an installable distribution or a hosted interactive demo.
 
-## What it does
+## Key Capabilities
 
-| Capability | What it brings to the workflow |
+<picture>
+  <source media="(prefers-reduced-motion: reduce) and (max-width: 650px)" srcset="./assets/brand/capabilities-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/brand/capabilities-static.svg" />
+  <source media="(max-width: 650px)" srcset="./assets/brand/capabilities-mobile.svg" />
+  <img src="./assets/brand/capabilities.svg" width="100%" alt="Six capabilities: Reusable Tools with explicit inputs and results; Published Workflows backed by Temporal; AI Agents with configured capabilities; External MCP Access for coding assistants; Structured Results for workflow and node outcomes; Operational Visibility through run history and diagnostics." />
+</picture>
+
+<details>
+<summary><strong>Read Capabilities as Text</strong></summary>
+
+| Capability | What It Enables |
 |---|---|
-| **Durable orchestration** | Temporal-backed execution with retries, approvals, recovery controls, and scheduling. |
-| **Reusable tools** | Tools composed into workflows rather than repeated as disconnected manual steps. |
-| **Optional embedded agents** | Adaptive work inside a workflow, with configured access to Tools, Workflows and supported direct operations. |
-| **External coding-agent access** | Coding assistants can use SkyCommand directly through MCP to invoke exposed operations and inspect results under their configured authority. |
-| **Agent Capabilities** | Project + Agent-version assignments distinguish enabled Tools/Workflows from supported direct-operation permissions. |
-| **Execution visibility** | Run history, node results, structured outputs, and operational diagnostics. |
-| **Developer workflows** | Git and Docker operations alongside database-backed services and operational tooling. |
-| **Human control** | Review and approval steps where a workflow calls for an operator's decision. |
+| **Reusable Tools** | Compose registered operations with explicit inputs and results. |
+| **Published Workflows** | Temporal-backed execution with retries, scheduling, recovery controls and configured approval steps. |
+| **AI Agents** | Run embedded agents with access selected for a Project and exact Agent definition version. |
+| **External MCP Access** | Let configured coding assistants invoke exposed operations and inspect results through MCP. |
+| **Structured Results** | Inspect workflow outcomes, node results and attributable agent outputs. |
+| **Operational Visibility** | Follow run history and diagnostics from the operator interface. |
 
-[Explore the feature tour →](./docs/features.md)
+</details>
 
-## How it fits together
+[Explore the Feature Tour →](./docs/features.md)
 
-```text
-Human operator → React UI ─────────────┐
-                                      ├→ SkyCommand Core API / services
-External coding agent → external MCP ─┘       ├→ Registered Tools
-                                             └→ Published Workflows (Temporal)
-                                                       └→ Optional embedded Agent
-                                                             └→ Run-bound MCP
-                                                                  └→ Configured capabilities
+## See the Platform
 
-PostgreSQL: workflow/run state, results and capability assignments
-Docker / Host services: registered operational execution
-```
+**Real application screenshots are the next addition.** No UI captures have been published yet. The [screenshot gallery](./docs/gallery.md) is reserved for reviewed application screens, not generated product mockups.
 
-This is a simplified conceptual view, not a deployment specification. [Read the architecture overview →](./docs/architecture.md)
+The planned tour follows a complete sequence: **Workflow Overview → Workflow Structure → Run Results → Agent Capabilities → External MCP Access**. Developer-operations captures will show how Git and Docker work fits into the platform.
 
-**Core stack:** React · Node.js / TypeScript · PostgreSQL · Temporal · Docker · REST APIs · MCP
+[Open the Screenshot Gallery →](./docs/gallery.md) · [Follow the Walkthrough →](./docs/walkthrough.md)
 
-## Agents in both directions
+## Platform Architecture
 
-**SkyCommand can call agents, and coding agents can call SkyCommand.** External coding assistants use an MCP connection to existing registered services. Embedded Agent Runs use a separate, run-bound MCP connection and their configured Project + Agent-version capabilities.
+<picture>
+  <source media="(prefers-reduced-motion: reduce) and (max-width: 650px)" srcset="./assets/brand/architecture-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/brand/architecture-static.svg" />
+  <source media="(max-width: 650px)" srcset="./assets/brand/architecture-mobile.svg" />
+  <img src="./assets/brand/architecture.svg" width="100%" alt="Operator and External Coding Agents connect to shared React UI / Node.js Core API services. Execution Capabilities group Registered Tools, AI Agents and Published Workflows. Automation Endpoints include File System, Database, Git Repositories and Web APIs. Access depends on configured capabilities and permissions." />
+</picture>
 
-Capability configuration limits what the embedded agent may invoke. Assigned Tools and Workflows run under their complete existing contracts; direct-operation controls apply to direct access rather than adding duplicate checks inside those operations. Normal executor permissions and explicitly configured approvals remain in effect.
+The access layer groups the React UI and Node.js Core API for clarity; **the UI calls platform services rather than bypassing them**. Configured coding assistants reach those services through MCP and can use the UI when their client supports browser interaction. Tools, embedded agents and published workflows form the callable execution layer. The resource groups show what automation can operate on—not unrestricted access for every agent.
 
-[Read the MCP and capability architecture →](./docs/architecture.md#two-directions-of-agent-integration)
+**Core Stack:** React · Node.js / TypeScript · PostgreSQL · Temporal · Docker · REST APIs · MCP
 
-## Work orders: current method, Phase 20 direction
+This is a conceptual product view, not a deployment specification or live-status display. [Read the Architecture Overview →](./docs/architecture.md)
 
-The development process already uses **structured prompts and work-order families** to coordinate scoped work streams, role-specific handoffs, dependencies, execution state and review evidence. One accountable writer per shared checkout protects unrelated work; successful execution and accepted delivery remain distinct.
+### Agent Integration and Capability Controls
 
-**Planned for Phase 20:** bring this existing work-order coordination model into SkyCommand as a native capability. The process is in use today; native product integration is planned, not presented here as delivered.
+Embedded Agent Runs use a **run-bound MCP connection** and capabilities assigned to a **Project + exact Agent definition version**. External coding assistants use a separate MCP connection and their own configured identity and permissions.
 
-[Explore work-order coordination →](./docs/architecture.md#work-order-coordination)
+Assigned Tools and Workflows retain their complete execution contracts. Direct-operation controls govern direct access; they do not add duplicate checks inside an already enabled Tool or Workflow. Normal executor permissions and explicitly configured approvals remain in effect.
 
-## See the platform
+[Explore MCP and Agent Capabilities →](./docs/architecture.md#two-directions-of-agent-integration)
 
-The [walkthrough](./docs/walkthrough.md) outlines a representative demonstration: run a deterministic workflow, inspect its results, show configured embedded-agent access, and use an external coding assistant through MCP. It keeps the current development work-order process separate from the Phase 20 roadmap.
+### Development Process and Phase 20
 
-**UI screenshots have not been published in this initial documentation package.** The [gallery](./docs/gallery.md) will contain reviewed captures from the actual application. The header is decorative concept artwork—not an application screenshot.
+The current development process uses **Cloud Agent, Operator, Local Agent and a Dropbox artifact relay**, coordinated through structured prompts and work-order families. Scoped streams, dependencies, handoffs and execution evidence organize the work; the Operator initiates the Local Agent.
 
-## Engineering approach
+That development method is separate from the product architecture above. **Native work-order coordination inside SkyCommand is planned for Phase 20**, not presented as an already delivered feature.
 
-- Keep repeatable execution deterministic; introduce agents deliberately.
-- Make execution observable through run history and structured results.
-- Design for retries, recovery, and operator review.
-- Keep implementation, validation, and release decisions accountable to a human.
+[View the Development Process on My Profile →](https://github.com/PStar80) · [Read About Work-Order Coordination →](./docs/architecture.md#work-order-coordination)
 
-## Project scope
+## Walkthrough and Documentation
 
-SkyCommand is an independently developed platform. This repository focuses on its design, capabilities, and operator experience. The application implementation and development environment remain private.
+Start with the [feature tour](./docs/features.md), follow the [walkthrough guide](./docs/walkthrough.md), or inspect the [architecture and capability model](./docs/architecture.md). The walkthrough covers a workflow run, structured results, embedded-agent capabilities and external MCP access.
 
-## About the builder
+## Why the Source Is Private
 
-I'm **Paul Sattaur**, a software engineer based in the Greater Toronto Area. My work combines enterprise backend and database experience with hands-on workflow orchestration, full-stack development, and AI-assisted engineering.
+The application implementation and connected development environment remain private. This repository provides a public window into the product through documentation, architecture and reviewed demonstration material, without publishing account configuration, credentials or private work artifacts.
 
-[GitHub profile](https://github.com/PStar80) · [LinkedIn](https://www.linkedin.com/in/paulsattaur/) · [Request a walkthrough](mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough)
+The banner is decorative artwork; the diagrams explain concepts. Neither should be read as an application screenshot or proof of live execution.
+
+## About the Builder
+
+I'm **Paul Sattaur**, a full-stack software engineer building connected applications for workflow automation, data engineering and interactive visualization. My current focus is AI-native applications and agentic automation—from the user experience to the services and data that power it.
+
+[GitHub Profile](https://github.com/PStar80) · [LinkedIn](https://www.linkedin.com/in/paulsattaur/) · [Request a Walkthrough](mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough)
 
 **Build systems that explain themselves.**

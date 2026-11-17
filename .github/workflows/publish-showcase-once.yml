@@ -1,0 +1,73 @@
+name: Publish prepared SkyCommand showcase (one time)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-showcase-once.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Publish the verified documentation and branding package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import base64, hashlib, json, os, re, urllib.request, zlib
+          from pathlib import PurePosixPath
+          from xml.etree import ElementTree as ET
+
+          REPO = "PStar80/SkyCommand-Demo"
+          SOURCE = "https://raw.githubusercontent.com/PStar80/PStar80/fa445e05917540adf7672ed61306fa6531361f76/hero.svg"
+          ART_HASH = "626c03f61f870820d6dbb5075afc4f96cf83d91c52a7137254bcd239b0b7568b"
+          EXPECTED = {'MAINTAINING.md': 'f46f16112c4b520b474af7eea4770dc5ece558e543746b72f6a26de12b339288', 'README.md': '90f1060e6b90c826a6c0ec40bdd6375444a9cbd8b8c5412606a6ab802c40ff8f', 'assets/brand/hero-mobile-static.svg': 'd5cb755680e821400a71089a79bc48e6388020fad21fdb34ac7822df99149d68', 'assets/brand/hero-mobile.svg': '01c183f2123998c48f2a73cac1928ad89e39eacfadc3bf657d1d60e6f59cad06', 'assets/brand/hero-static.svg': '2ff8154ca0971caa412b2239c1c5b7ccdde9c7411960d4e3c5d598e7b9192a20', 'assets/brand/hero.svg': '3a669b8db2b62bd3a860c40c0fd1b099064dfef4f3fb9603c0914ab5eb9f1770', 'assets/screenshots/README.md': '2c849649fdf2c0d23969f5d39045b409bcc3e1a2088f0b6a3006f9fef1119b55', 'docs/architecture.md': '587a0cf077afdfa282053180163a8834bd15edd951fac64ca2dc61b4dc337e61', 'docs/features.md': '3972592c854908547d18b7bec27711b5687beeec3132b7aee68c0e0aa3c5a8b2', 'docs/gallery.md': '8ebf3bdff8f5c7cd2d59b0fe5924dc565995b4366905931b767df2d507970567', 'docs/walkthrough.md': 'da19135e2cf441f02656efe61e16d294217fdebcc12b3ab09d811afb097f647e'}
+          PAYLOAD = "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"
+
+          assert os.environ["GITHUB_REPOSITORY"] == REPO, "Unexpected repository"
+          files = json.loads(zlib.decompress(base64.b64decode(PAYLOAD)))
+          assert set(files) == set(EXPECTED), "Unexpected publication paths"
+          with urllib.request.urlopen(SOURCE, timeout=30) as response:
+              source_svg = response.read().decode("utf-8")
+          artwork = [s for s in re.findall(r"data:image/png;base64,([A-Za-z0-9+/=]+)", source_svg)
+                     if hashlib.sha256(s.encode()).hexdigest() == ART_HASH]
+          assert len(artwork) == 1, "Approved artwork not found"
+          for path, text in files.items():
+              assert not PurePosixPath(path).is_absolute() and ".." not in PurePosixPath(path).parts
+              text = text.replace("__SKYCOMMAND_APPROVED_ART_BASE64__", artwork[0])
+              assert hashlib.sha256(text.encode("utf-8")).hexdigest() == EXPECTED[path], path
+              if path.endswith(".svg"):
+                  ET.fromstring(text)
+              files[path] = text
+
+          api_root = "https://api.github.com/repos/" + REPO
+          headers = {"Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                     "Accept": "application/vnd.github+json",
+                     "X-GitHub-Api-Version": "2022-11-28",
+                     "User-Agent": "SkyCommand-showcase-publication",
+                     "Content-Type": "application/json"}
+          def api(path, method="GET", data=None):
+              body = None if data is None else json.dumps(data).encode("utf-8")
+              request = urllib.request.Request(api_root + path, data=body, headers=headers, method=method)
+              with urllib.request.urlopen(request, timeout=45) as response:
+                  return json.load(response)
+
+          head = api("/git/ref/heads/main")["object"]["sha"]
+          assert head == os.environ["GITHUB_SHA"], "Branch advanced; not overwriting newer work"
+          parent = api("/git/commits/" + head)
+          entries = [{"path": path, "mode": "100644", "type": "blob", "content": text}
+                     for path, text in sorted(files.items())]
+          tree = api("/git/trees", "POST", {"base_tree": parent["tree"]["sha"], "tree": entries})
+          commit = api("/git/commits", "POST", {
+              "message": "Publish SkyCommand documentation showcase and blue metallic branding",
+              "tree": tree["sha"], "parents": [head]})
+          api("/git/refs/heads/main", "PATCH", {"sha": commit["sha"], "force": False})
+          print("Published 11 verified showcase files in commit " + commit["sha"])
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write("## Showcase published\n\nCommit: `" + commit["sha"] + "`\n\n")
+              summary.write("All 11 files match the prepared package. Only documentation and branding assets were published.\n")

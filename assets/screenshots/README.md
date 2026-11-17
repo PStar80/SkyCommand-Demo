@@ -1,9 +1,9 @@
-# Application captures
+# Reviewed SkyCommand Application Screenshots
 
-No screenshots have been added yet. This directory is reserved for reviewed captures from SkyCommand's actual interface.
+These ten JPG images are exported from owner-provided application captures dated November 17, 2026. They are genuine UI screenshots with limited permanent redactions; they are not generated interfaces. The source PNG files were not included in this upload package.
 
-Use clear filenames such as `01-workflow-overview.png` and add a caption in `docs/gallery.md` when a file is published. Do not add Markdown image links until their target images exist.
+Redactions: login email/password entry, private agent conversation titles, internal workspace archive path, selected run identifiers and a container identifier. One screenshot was cropped to remove the browser address bar.
 
-Before publishing, crop browser tabs, address bars, and unrelated windows. Remove credentials, account/session information, personal or client data, and private paths. For redactions, replace the affected pixels with an opaque fill in an exported copy and check the exported image.
+`10-playwright-tests.jpg` shows test configuration in the supplied development build, not a completed test or a release/support-status determination. The agent configuration screenshot contains a historical test fixture with dispatch status unverified.
 
-Prefer a small selection of readable screens showing a coherent workflow over a large collection of near-duplicates. Do not use this folder for repository exports, logs, database dumps, or full-desktop recordings.
+This folder contains no source code or credential material. Recheck every file before public release.

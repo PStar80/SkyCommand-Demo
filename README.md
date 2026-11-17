@@ -50,11 +50,21 @@ SkyCommand is a full-stack workflow automation and orchestration platform built 
 
 ## See the Platform
 
-**Real application screenshots are the next addition.** No UI captures have been published yet. The [screenshot gallery](./docs/gallery.md) is reserved for reviewed application screens, not generated product mockups.
+These are **real SkyCommand development-environment screenshots**. Personal inputs and sensitive paths are redacted. Captions identify the actual interface state shown in each capture.
 
-The planned tour follows a complete sequence: **Workflow Overview → Workflow Structure → Run Results → Agent Capabilities → External MCP Access**. Developer-operations captures will show how Git and Docker work fits into the platform.
+[![Command Center — SkyCommand automation analytics](./assets/screenshots/02-command-center.jpg)](./assets/screenshots/02-command-center.jpg)
 
-[Open the Screenshot Gallery →](./docs/gallery.md) · [Follow the Walkthrough →](./docs/walkthrough.md)
+*Command Center — tool and workflow activity, utilization, scheduling and performance.*
+
+[![Live workflow graph — a workflow node running](./assets/screenshots/06-workflow-running.jpg)](./assets/screenshots/06-workflow-running.jpg)
+
+*Workflow Operations — the runtime overlay highlights a RUNNING node and earlier completed steps. This is not a completed-run capture.*
+
+[![Agent Capabilities — configured tools and workflows](./assets/screenshots/09-agent-capabilities.jpg)](./assets/screenshots/09-agent-capabilities.jpg)
+
+*Agent Capabilities — catalogued and assigned operations; the pictured historical test item is not verified at dispatch.*
+
+[Browse All Ten Screenshots →](./docs/gallery.md) · [Follow the Illustrated Walkthrough →](./docs/walkthrough.md)
 
 ## Platform Architecture
 

@@ -1,53 +1,53 @@
-# Walkthrough guide
+# SkyCommand Visual Walkthrough
 
-[← Showcase home](../README.md)
+[← Showcase Home](../README.md) · [Screenshot Gallery](./gallery.md)
 
-This is a proposed sequence for a live or recorded demonstration. It is **not a transcript of a captured run**, and it contains no invented timings, results, screenshots, or performance claims.
+This is a **guided reading of real UI captures**, not a transcript of a single continuous execution. Images are from a development environment on November 17, 2026; account information and internal paths were redacted.
 
-## 1. Orient the viewer
+## 1. Enter the operator interface
 
-Introduce the workflow and the problem it addresses. Explain which work is deterministic and whether any part benefits from an optional agent. Use demonstration-safe names and inputs.
+[View the Login Screen](../assets/screenshots/01-login.jpg). SkyCommand uses a branded sign-in screen with a star-field background. Entered account fields are hidden in the public copy.
 
-## 2. Inspect the workflow
+## 2. Inspect the Command Center
 
-Show the ordered steps, reusable tools, and any relevant approval or retry behaviour. Explain the expected outcome before starting execution.
+[View Command Center](../assets/screenshots/02-command-center.jpg). The overview presents tool and workflow activity, scheduled execution, utilization and workflow duration across the displayed period.
 
-## 3. Run and observe
+[View SkyCommand Controls](../assets/screenshots/03-skycommand-controls.jpg). The controls popover provides operational entry points and point-in-time runtime status. The screenshot does not imply that every displayed service is healthy or currently running.
 
-Start the selected workflow and show progress through its steps. Keep the explanation centred on the operator's view rather than private infrastructure or account configuration.
+## 3. Examine the infrastructure
 
-## 4. Inspect the outcome
+[View Infrastructure](../assets/screenshots/04-infrastructure.jpg). Resource trends, containers and lifecycle events connect the automation interface to underlying operational services.
 
-Open the run history and a representative node result. Explain the difference between the overall workflow status and the evidence recorded for each step.
+## 4. Configure a workflow
 
-## 5. Explain recovery
+[View Start Workflow](../assets/screenshots/05-start-workflow.jpg). The Repo Files Generator interface shows selected inputs and a read-only runtime map. It is captured **before execution**; the screenshot itself is not proof that the displayed launch was performed.
 
-Where a suitable demonstration is available, show how the operator inspects a failure and uses the available recovery or retry control. Label any deliberately introduced failure as a test scenario. Do not imply that every action is safe to repeat without examining its effect.
+## 5. Follow execution in progress
 
-## 6. Show an optional agent
+[View the Running Workflow](../assets/screenshots/06-workflow-running.jpg). The Workflow Operations overlay shows earlier nodes completed while the Generate Repository Map node is **RUNNING**, with later nodes not yet run. This is an actual point-in-time in-progress graph, **not** a completed workflow.
 
-When appropriate, first show the selected Project + Agent-version capability assignments, then demonstrate an agent task within the workflow and its structured result. Explain why that task benefits from reasoning, while routine operations stay deterministic.
+## 6. Inspect structured evidence
 
-Distinguish assigned Tools and Workflows from direct-operation controls. Do not present a disabled direct operation as proof that an enabled Tool cannot perform the same action within its normal contract.
+[View a Structured Tool Result](../assets/screenshots/07-tool-structured-result.jpg). A separate tool execution exposes a versioned ToolResult with an artifact summary, performance telemetry and packaging policy. Its internal archive path has been redacted. **Do not interpret this as the final result of the workflow in step 5.**
 
-## 7. Show external coding-agent access through MCP
+## 7. Explore AI agents
 
-Use an already configured coding assistant to request a suitable exposed SkyCommand operation, such as a read-only inspection or an approved demonstration workflow. Show the genuine returned result or Run ID and the corresponding platform history where available.
+[View Run Agents](../assets/screenshots/08-run-agents.jpg). This is the conversation/workspace surface; its pictured state is idle. The real session history was hidden from the public version.
 
-Explain that the external MCP connection is distinct from the embedded Agent Run's connection. Do not display credentials, private connection configuration or unrestricted local-access claims.
+[View Agent Capabilities](../assets/screenshots/09-agent-capabilities.jpg). The example shows capability discovery, assignments and an inspector. Its selected historical test item is marked **NOT_VERIFIED_AT_DISPATCH**; an assigned checkbox does not prove a callable operation has been authorized or executed.
 
-## 8. Explain the work-order development method
+## 8. Understand MCP and the development process
 
-Describe how an outcome becomes a scoped work order, how related work streams carry dependencies and assigned roles, and how results and review evidence are handed back. Use a sanitized illustrative outline rather than publishing private work-order payloads.
+Configured external coding assistants can access SkyCommand's published tools and workflows through MCP, while embedded agents use a separate run-bound capability path. Read the [architecture and capability overview](./architecture.md) for the model. **No external MCP invocation screenshot was supplied in this set**, so this page does not claim to demonstrate one visually.
 
-Clearly label this as the **current development method**. Native work-order coordination inside SkyCommand is **planned for Phase 20**; do not present an illustration as a shipped product screen.
+Work-order families and the Cloud Agent / Operator / Local Agent relay are an established development method. Native work-order integration in SkyCommand is **planned for Phase 20**, not shown as a shipped UI feature.
 
-## 9. Close with the engineering choices
+## 9. Inspect browser-test configuration
 
-Summarize durable execution, reusable tools, visible results, and human review. Distinguish the capability shown from work still in progress.
+[View Playwright Tests](../assets/screenshots/10-playwright-tests.jpg). The supplied capture shows the Playwright Tests → Run Tests page and a configured Workflow Initialization E2E test. Its Chromium execution profile, inputs and launch control are visible. It is not a test-results capture and does not demonstrate a completed test.
 
-## Demonstration status
+## What future captures could add
 
-No video, recording, or application screenshots are included in this first documentation package. Reviewed media will be linked from the [gallery](./gallery.md) once available.
+A completed workflow run with its own structured node results; a demonstrated agent result; and a verified external MCP invocation matched to SkyCommand's execution history.
 
-[Request a walkthrough](mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough)
+[Back to Gallery](./gallery.md) · [Request a Walkthrough](mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough)

@@ -13,8 +13,6 @@
   <a href="mailto:paulsattaur@hotmail.com?subject=SkyCommand%20walkthrough">Get In Touch</a>
 </p>
 
-# SkyCommand
-
 **Build workflows. Run agents. Understand every result.**
 
 SkyCommand is a full-stack workflow automation and orchestration platform built by **Paul Sattaur** for developers and operators. It brings reusable tools, durable workflows, embedded AI agents and external MCP access into one interface for running work and inspecting its results.
